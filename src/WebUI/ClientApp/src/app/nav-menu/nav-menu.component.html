@@ -2,22 +2,14 @@
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">Mafqoodati.WebUI</a>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-              aria-label="Toggle navigation"
-              [attr.aria-expanded]="isExpanded"
-              (click)="toggle()">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-           [ngClass]="{ show: isExpanded }">
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <app-login-menu></app-login-menu>
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item"
-              [routerLinkActive]="['link-active']"
-              [routerLinkActiveOptions]="{ exact: true }">
+          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
@@ -33,6 +25,17 @@
             <a class="nav-link text-dark" href="/api" target="_blank">API</a>
           </li>
         </ul>
+        <div class="collapse navbar-collapse" [ngClass]="isExpanded? 'mebileopen':''">
+          <div class="languages" ngbDropdown>
+            <a class="btn" data-toggle="tooltip" data-placement="top" id="languageDropdown" ngbDropdownToggle>
+              <i class="fas fa-globe mx-2"></i>
+            </a>
+            <div ngbDropdownMenu aria-labelledby="languageDropdown">
+              <a (click)="selectLanguage('en');" class="dropdown-item text-dark">English</a>
+              <a (click)="selectLanguage('ar');" class="dropdown-item text-dark">Arabic</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
